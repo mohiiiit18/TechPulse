@@ -1,0 +1,135 @@
+{
+  "model_file": "D:\\project 69\\models\\job_role_model.pkl",
+  "encoder_file": "D:\\project 69\\models\\skill_encoder.pkl",
+  "model_type": "LogisticRegression",
+  "sklearn_version_current": "1.9.1",
+  "sklearn_version_at_pickle": "1.6.1",
+  "version_mismatch": true,
+  "dataset_rows": 1722,
+  "train_size": 1377,
+  "test_size": 345,
+  "train_accuracy": 0.8758,
+  "test_accuracy": 0.8638,
+  "overfit_gap": 0.012,
+  "overfit_warning": false,
+  "macro_f1": 0.8378,
+  "weighted_f1": 0.8677,
+  "macro_precision": 0.8,
+  "macro_recall": 0.8996,
+  "classification_report": {
+    "Data Scientist / ML Engineer": {
+      "precision": 0.746031746031746,
+      "recall": 0.94,
+      "f1-score": 0.831858407079646,
+      "support": 50.0
+    },
+    "DevOps / Platform Engineer": {
+      "precision": 0.5952380952380952,
+      "recall": 0.8928571428571429,
+      "f1-score": 0.7142857142857143,
+      "support": 28.0
+    },
+    "Product / Project Manager": {
+      "precision": 0.9,
+      "recall": 0.9545454545454546,
+      "f1-score": 0.9264705882352942,
+      "support": 66.0
+    },
+    "Software Developer": {
+      "precision": 0.9588235294117647,
+      "recall": 0.8109452736318408,
+      "f1-score": 0.8787061994609164,
+      "support": 201.0
+    },
+    "accuracy": 0.863768115942029,
+    "macro avg": {
+      "precision": 0.8000233426704015,
+      "recall": 0.8995869677586095,
+      "f1-score": 0.8378302272653928,
+      "support": 345.0
+    },
+    "weighted avg": {
+      "precision": 0.8872225605217933,
+      "recall": 0.863768115942029,
+      "f1-score": 0.867709928316394,
+      "support": 345.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      47,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      25,
+      0,
+      3
+    ],
+    [
+      2,
+      0,
+      63,
+      1
+    ],
+    [
+      14,
+      17,
+      7,
+      163
+    ]
+  ],
+  "classes": [
+    "Data Scientist / ML Engineer",
+    "DevOps / Platform Engineer",
+    "Product / Project Manager",
+    "Software Developer"
+  ],
+  "sample_predictions": [
+    {
+      "skills": [
+        "python",
+        "machine-learning",
+        "deep-learning",
+        "pytorch",
+        "sql"
+      ],
+      "predicted_role": "Data Scientist / ML Engineer",
+      "confidence_pct": 95.9
+    },
+    {
+      "skills": [
+        "kubernetes",
+        "docker",
+        "aws",
+        "terraform",
+        "ci-cd",
+        "linux"
+      ],
+      "predicted_role": "DevOps / Platform Engineer",
+      "confidence_pct": 86.1
+    },
+    {
+      "skills": [
+        "javascript",
+        "react",
+        "node.js",
+        "typescript",
+        "html-css"
+      ],
+      "predicted_role": "Software Developer",
+      "confidence_pct": 97.7
+    },
+    {
+      "skills": [
+        "product-management",
+        "project-management",
+        "communication"
+      ],
+      "predicted_role": "Product / Project Manager",
+      "confidence_pct": 99.8
+    }
+  ]
+}

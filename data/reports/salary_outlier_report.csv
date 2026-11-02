@@ -1,0 +1,33 @@
+job_id,title_clean,company_name,salary_min,salary_max,salary_currency,salary_period,salary_norm_avg
+6c58c69b-175a-4abe-aa84-2447731c0d39,staff platform engineer - applied ai,afterquery,300000.0,400000.0,USD,year,350000.0
+9b185b18-c65f-4ba4-9471-d46ae430ae76,project manager (marketing),agent,2500.0,2500.0,USD,month,30000.0
+bdef21ba-613b-4900-ad17-0957adec5edb,market launch & operations project manager,annaautismcare,24000.0,38000.0,USD,year,31000.0
+4b610b44-ac59-43da-a514-ca69e2cce9c3,general program manager,ansiblehealth,700.0,900.0,USD,month,9600.0
+a986520b-8d1e-41a7-bc15-2c509c0b0d58,full-stack developer (turkey),anyone-ai,15.0,35.0,USD,hour,50000.0
+44d22c6d-5661-43d2-a484-7424da4e4902,full-stack developer (poland),anyone-ai,15.0,35.0,USD,hour,50000.0
+c1e13f2e-07d2-46c7-8581-d38f71268d57,full-stack developer (thailand),anyone-ai,15.0,35.0,USD,hour,50000.0
+73a9c528-f2ff-408a-90cc-1ff303e04b1c,full-stack developer (vietnam),anyone-ai,15.0,35.0,USD,hour,50000.0
+ac328e9a-47a4-476f-aa7a-30d7aff29652,full-stack developer (indonesia),anyone-ai,15.0,35.0,USD,hour,50000.0
+1cd1d5d1-65c3-4abc-90b3-9df8fced4ad8,python developer - india (remote),anyone-ai,15.0,35.0,USD,hour,50000.0
+7203c0e8-d22e-4c2e-ad8b-f56651c0ee72,python developer - remote in indonesia,anyone-ai,15.0,35.0,USD,hour,50000.0
+ea0865c5-0100-4772-ac19-ca9f3ef99744,python developer - remote in poland,anyone-ai,15.0,35.0,USD,hour,50000.0
+e2660ec4-e7d6-4764-bd82-b510305fe1e0,python developer - remote in portugal,anyone-ai,15.0,35.0,USD,hour,50000.0
+0c3c9426-b942-4eb4-a51b-c222f7cea898,python developer - remote in thailand,anyone-ai,15.0,35.0,USD,hour,50000.0
+7a7c4b4a-8afb-4571-9395-443d9ce9a65b,python developer - remote in turkey,anyone-ai,15.0,35.0,USD,hour,50000.0
+dbb699fc-f978-4376-9222-4cf885e9d99c,python developer - remote in vietnam,anyone-ai,15.0,35.0,USD,hour,50000.0
+7026b075-cfc9-4774-8e8f-85d6af98f90c,backend developer - ai trainer (india),anyone-ai,15.0,35.0,USD,hour,50000.0
+678e8ee2-9482-4936-8a51-62f49223cd41,full-stack developer - ai trainer (indonesia),anyone-ai,15.0,35.0,USD,hour,50000.0
+e825df23-e721-465b-87d7-04a569f7269e,full-stack developer - ai trainer (india),anyone-ai,15.0,35.0,USD,hour,50000.0
+92860cd8-d72f-4191-baf4-530a29e9dda1,python developer - egypt (remote),anyone-ai,15.0,35.0,USD,hour,50000.0
+090091cc-3bf6-478d-badc-f6408c252c58,backend developer - ai trainer (egypt),anyone-ai,15.0,35.0,USD,hour,50000.0
+30a28090-a764-41b9-9383-5be3b82f897d,staff software engineer,applied,265000.0,380000.0,USD,year,322500.0
+136e0ca1-3e93-4eac-8269-8b1695efb7c5,"full stack software engineer, cdmx",arketa,45000.0,70000.0,USD,year,57500.0
+28ecbf78-2c8b-40ee-9a55-89913fb5d923,staff software engineer,astera,200000.0,500000.0,USD,year,350000.0
+7190c059-406e-4278-a826-b6485cd579dc,principal software engineer,astera,300000.0,600000.0,USD,year,450000.0
+666377b7-a013-4163-bf4e-3f20d50a3a6e,"staff software engineer, platform infrastructure",astronomer,275000.0,377000.0,USD,year,326000.0
+21416810-5e7f-45e7-be83-2a75753d5719,staff full stack engineer ($300k - $500k salary),batoncorporation,300000.0,500000.0,USD,year,400000.0
+7ee16d4c-a9a4-42b0-873f-6c76e96f4717,staff backend engineer ($300k - $500k salary),batoncorporation,300000.0,500000.0,USD,year,400000.0
+765c09d8-cd86-4a5e-bdfe-ac6d43c193ea,staff frontend engineer ($300k - $500k salary),batoncorporation,300000.0,500000.0,USD,year,400000.0
+14cfe551-c629-41c6-9c45-43d9554149a4,senior staff backend engineer ($500k - $1.5m salary),batoncorporation,500000.0,1500000.0,USD,year,1000000.0
+68cdbe6f-7e45-46a2-a312-2534d5d12fd6,senior staff full stack engineer ($500k - $1.5m salary),batoncorporation,500000.0,1500000.0,USD,year,1000000.0
+4555fad0-f418-49a2-8b39-e493f19ad404,senior staff frontend engineer ($500k - $1.5m salary),batoncorporation,500000.0,1500000.0,USD,year,1000000.0

@@ -1,0 +1,132 @@
+{
+  "records": 1722,
+  "columns": 24,
+  "unique_job_roles": 4,
+  "job_roles": {
+    "Software Developer": 1006,
+    "Product / Project Manager": 328,
+    "Data Scientist / ML Engineer": 250,
+    "DevOps / Platform Engineer": 138
+  },
+  "unique_titles": 1017,
+  "unique_skills_raw": 100,
+  "employment_types": {
+    "full_time": 1637,
+    "contract": 51,
+    "part_time": 18,
+    "temporary": 13,
+    "internship": 3
+  },
+  "currency_distribution": {
+    "nan": 850,
+    "USD": 716,
+    "EUR": 98,
+    "GBP": 22,
+    "CAD": 12,
+    "SGD": 10,
+    "PLN": 4,
+    "INR": 2,
+    "NZD": 2,
+    "CNY": 1,
+    "AUD": 1,
+    "AMD": 1,
+    "KRW": 1,
+    "SEK": 1,
+    "AED": 1
+  },
+  "period_distribution": {
+    "nan": 850,
+    "year": 786,
+    "hour": 78,
+    "month": 8
+  },
+  "countries_top10": {
+    "United States": 523,
+    "Singapore": 104,
+    "United Kingdom": 79,
+    "Germany": 74,
+    "South Korea": 48,
+    "Portugal": 36,
+    "Spain": 34,
+    "Poland": 30,
+    "India": 30,
+    "Australia": 29
+  },
+  "empty_titles": 0,
+  "records_with_no_skills": 0,
+  "duplicate_job_id": 0,
+  "duplicate_url": 0,
+  "negative_salary_min": 0,
+  "salary_min_gt_max": 0,
+  "invalid_dates": 0,
+  "rows_before": 1722,
+  "rows_after": 1722,
+  "rows_removed": 0,
+  "columns_before": 24,
+  "columns_after": 38,
+  "new_columns": [
+    "skills_original",
+    "parsed_skills_std",
+    "skills_std",
+    "skills_status",
+    "title_clean",
+    "seniority",
+    "salary_norm_min",
+    "salary_norm_max",
+    "salary_norm_currency",
+    "salary_norm_period",
+    "salary_norm_avg",
+    "posted_date",
+    "posting_age_days",
+    "freshness"
+  ],
+  "skills_raw_unique": 100,
+  "skills_canonical_unique": 100,
+  "alias_tokens_standardized": 0,
+  "titles_before": 1017,
+  "titles_after_clean": 1013,
+  "salary_stats_usd_min_raw": {
+    "n": 716,
+    "min": 15.0,
+    "p25": 132750.0,
+    "median": 160000.0,
+    "p75": 185000.0,
+    "p90": 210000.0,
+    "max": 500000.0
+  },
+  "salary_stats_norm_usd_year": {
+    "n": 716,
+    "min": 9600.0,
+    "p25": 162500.0,
+    "median": 195500.0,
+    "p75": 225000.0,
+    "p90": 249250.0,
+    "max": 1000000.0
+  },
+  "salary_usd_period_breakdown": {
+    "year": 643,
+    "hour": 71,
+    "month": 2
+  },
+  "validation_all_passed": true,
+  "validation_checks": {
+    "no_missing_job_id": true,
+    "no_duplicate_job_id": true,
+    "no_duplicate_url": true,
+    "no_empty_titles": true,
+    "no_negative_salaries": true,
+    "salary_min_le_max": true,
+    "dates_parse_or_missing": true,
+    "salary_period_values_valid": true,
+    "salary_currency_iso_like": true,
+    "skills_format_valid": true,
+    "freshness_no_unknown_when_date_present": true
+  },
+  "generated_at": "2026-10-30T19:20:44.292634+00:00",
+  "salary_outliers": {
+    "n_flagged": 32,
+    "lower_fence": 68750.0,
+    "upper_fence": 318750.0,
+    "removed": 0
+  }
+}

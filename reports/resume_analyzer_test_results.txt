@@ -1,0 +1,52 @@
+TechPulse Phase 5 Resume Analyzer Test Results
+============================================================
+
+Test PDFs are synthetic (generated with PyMuPDF) — no real resume used/stored.
+
+[PASS] reject non-PDF type: error returned
+[PASS] reject empty upload: error returned
+[PASS] reject >5MB upload: size limit
+[PASS] accept valid PDF upload: ok
+[PASS] valid PDF parses: pages=1
+[PASS] email extracted: jordan.smith@example.com
+[PASS] phone extracted: +1 415 555 0132
+[PASS] name guessed: Jordan Smith
+[PASS] education lines found (not invented): 1 lines
+[PASS] experience entries found: 2
+[PASS] certifications detected: ['aws certified', 'pmp']
+[PASS] skills extracted & categorized: 10 skills / 6 categories
+[PASS] duplicate skills collapse (python listed once): deduped
+[PASS] extraction deterministic: identical
+[PASS] partial resume parses without fabricated sections: projects=[], certs=[]
+[PASS] partial resume scores low but valid: score=27.0
+[PASS] partial resume suggestions reference missing sections: evidence-backed
+[PASS] empty PDF rejected with clear message: No selectable text was found — this PDF appears to be empty 
+[PASS] scanned PDF flagged gracefully: No selectable text was found — this PDF appears to be empty or a scann
+[PASS] corrupt PDF rejected with clear message: Could not read this PDF — the file may be corrupted. (FileDa
+[PASS] unknown skill not fabricated: empty result
+[PASS] alias normalization: aliases mapped
+[PASS] duplicate/case variants collapse to one canonical token: ['pytorch', 'machine-learning', 'python']
+[PASS] ATS score = sum of transparent components: total=86.0
+[PASS] ATS score reproducible (deterministic): same resume -> same score
+[PASS] ATS disclaimer present: no vendor claim
+[PASS] ATS score within 0-100: 86.0
+[PASS] dataset job match computes all fields: compat=0.0, cov=0.0, sim=0.0
+[PASS] dataset match uses set ops + TF-IDF (no double counting): coverage from sets, similarity from text — independent
+[PASS] custom description match: compat=30.9, matched=['machine-learning', 'python', 'sql']
+[PASS] custom description finds missing skills: ['airflow', 'data-engineering', 'etl', 'kubernetes']
+[PASS] empty description handled (no NaN, similarity 0): compat=0.0
+[PASS] description without recognizable skills -> coverage unknown-safe: required=[]
+[PASS] suggestions avoid invented facts: 3 suggestions
+[PASS] suggestions prioritized high->low: ordered
+[PASS] parser writes no side-car files: stray files: []
+[PASS] resume_analyzer page renders (upload state): OK
+[PASS] resume upload + parse via UI: extracted & scored (metrics rendered: 5)
+[PASS] corrupt upload via UI shows error, no crash: Could not read this PDF — the file may be corrupted. (FileDa
+[PASS] regression: app.py navigates with resume page: OK
+[PASS] regression: app_pages/career_matcher.py: OK
+[PASS] regression: app_pages/market_intelligence.py: OK
+[PASS] regression: app_pages/salary_benchmark.py: OK
+[PASS] regression: app_pages/job_explorer.py: OK
+[PASS] regression: app_pages/job_recommendations.py: OK
+
+TOTAL: 45 passed, 0 failed

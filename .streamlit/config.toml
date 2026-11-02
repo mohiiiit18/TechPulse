@@ -1,0 +1,72 @@
+# TechPulse Design System — Red, Black and Gold Luxury Dark SaaS Theme
+# Primary palette:
+#   Background: #080808
+#   Secondary background: #111111
+#   Card background: #151515
+#   Primary red: #E32636
+#   Deep red: #8B0000
+#   Gold: #D4AF37
+#   Light gold: #FFD76A
+#   Primary text: #FFFFFF
+#   Secondary text: #B8B8B8
+#   Borders: #3A2020
+
+[theme]
+base = "dark"
+primaryColor = "#E32636"             # Primary Red
+backgroundColor = "#080808"          # Deep Pitch Black
+secondaryBackgroundColor = "#111111" # Secondary Jet Black
+codeBackgroundColor = "#151515"      # Card Black
+textColor = "#FFFFFF"                # Pure White Primary Text
+linkColor = "#FFD76A"                # Light Gold Links
+borderColor = "#3A2020"              # Subtle Dark Red Borders
+codeTextColor = "#FFD76A"            # Light Gold Code
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "10px"
+buttonRadius = "10px"
+
+# Typography — Inter (body) + JetBrains Mono (code)
+font = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "'Inter':https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+baseFontSize = 14
+baseFontWeight = 400
+codeFontSize = "13px"
+headingFontSizes = ["28px", "22px", "18px", "16px", "14px", "12px"]
+headingFontWeights = [700, 600, 600, 600, 500, 500]
+linkUnderline = false
+
+# Semantic & Status Colors
+greenColor = "#22C55E"
+redColor = "#E32636"
+yellowColor = "#D4AF37"
+orangeColor = "#FF8C00"
+blueColor = "#D4AF37"
+violetColor = "#C084FC"
+grayColor = "#B8B8B8"
+
+# Chart Colors — Red, Gold, Crimson & Contrasting Highlights
+chartCategoricalColors = [
+    "#E32636",                       # Primary Red
+    "#D4AF37",                       # Classic Gold
+    "#FFD76A",                       # Light Gold
+    "#8B0000",                       # Deep Red / Crimson
+    "#22C55E",                       # Emerald Green (for matches/positive metrics)
+    "#E65100",                       # Amber / Deep Orange
+    "#F43F5E",                       # Rose Red
+    "#B8B8B8",                       # Secondary Platinum
+]
+
+# Dataframe & Table Styling
+dataframeBorderColor = "#3A2020"
+dataframeHeaderBackgroundColor = "#151515"
+dataframeHeaderTextColor = "#FFD76A"
+
+[theme.sidebar]
+backgroundColor = "#080808"          # Black Sidebar
+secondaryBackgroundColor = "#111111" # Elevated Widget Background
+codeBackgroundColor = "#151515"
+textColor = "#FFFFFF"                # Pure White
+borderColor = "#3A2020"              # Red Border
+primaryColor = "#E32636"             # Primary Red

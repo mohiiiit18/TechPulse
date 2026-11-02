@@ -1,0 +1,34 @@
+TechPulse Phase 2 Data Quality Test Results
+============================================================
+
+[PASS] cleaned dataset loads: 1722 rows, 38 cols
+[PASS] row count preserved: 1722 -> 1722 (nothing silently deleted)
+[PASS] new enrichment columns exist: added: ['freshness', 'parsed_skills_std', 'posted_date', 'posting_age_days', 'salary_norm_avg', 'salary_norm_currency', 'salary_norm_max', 'salary_norm_min', 'salary_norm_period', 'seniority', 'skills_original', 'skills_status', 'skills_std', 'title_clean']
+[PASS] country gaps preserved as Unknown: 422 rows
+[PASS] city gaps preserved as Unknown: 932 rows
+[PASS] salary NaNs NOT fabricated: 850 -> 850
+[PASS] skills_status distinguishes empty/unknown: {'specified': 1722}
+[PASS] original skills preserved: skills_original identical to raw
+[PASS] no duplicate job_id after cleaning: 0 remaining
+[PASS] no duplicate url after cleaning: 0 remaining
+[PASS] salary_norm only for USD rows: 716 normalized rows
+[PASS] no negative salaries: min/max >= 0
+[PASS] salary_min <= salary_max: 872 paired rows
+[PASS] hourly annualization x2000 applied: 71 hourly rows
+[PASS] monthly annualization x12 applied: 2 monthly rows
+[PASS] non-USD NOT converted (no invented FX): 98 EUR rows untouched
+[PASS] skill format valid (lowercase tokens): all canonical tokens
+[PASS] parsed_skills_std non-empty for all rows: 0 rows with missing skill lists
+[PASS] job_role unchanged by cleaning: ML target untouched
+[PASS] seniority column populated: {'unspecified': 1047, 'senior': 430, 'staff': 177, 'lead': 33, 'principal': 21, 'junior': 9, 'intern': 3, 'head': 2}
+[PASS] no title lost (no empty cleaned titles): 1013 distinct cleaned titles
+[PASS] all posting dates parsed: 0 invalid dates
+[PASS] freshness values valid: {'aging (91-365d)': 1530, 'stale (>365d)': 189, 'recent (31-90d)': 3}
+[PASS] posting_age_days consistent: max age 2005 days
+[PASS] page renders on cleaned data: app.py: OK
+[PASS] page renders on cleaned data: app_pages/career_matcher.py: OK
+[PASS] page renders on cleaned data: app_pages/market_intelligence.py: OK
+[PASS] page renders on cleaned data: app_pages/salary_benchmark.py: OK
+[PASS] page renders on cleaned data: app_pages/job_explorer.py: OK
+
+TOTAL: 29 passed, 0 failed

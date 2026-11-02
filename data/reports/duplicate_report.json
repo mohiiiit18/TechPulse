@@ -1,0 +1,9 @@
+{
+  "policy": "Remove only confirmed duplicates (same job_id or same URL).",
+  "duplicate_job_id_before": 0,
+  "duplicate_url_before": 0,
+  "suspected_same_title_company_location": 44,
+  "suspected_note": "Suspected groups have unique job_ids and URLs (multi-region postings / re-posts); retained.",
+  "confirmed_duplicates_removed": 0,
+  "rows_removed": []
+}

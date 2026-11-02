@@ -1,0 +1,50 @@
+TechPulse Phase 7 Salary Prediction Test Results
+============================================================
+
+[PASS] salary model + preprocessor load: XGBRegressor
+[PASS] salary_model_metadata.json complete: all keys present
+[PASS] metadata currency is USD-only: currency=USD, period=year
+[PASS] metadata records library versions: {'sklearn': '1.9.1', 'pandas': '3.0.6', 'numpy': '2.5.4'}
+[PASS] salary target all positive finite: n=706, min=$50,000, max=$350,000
+[PASS] no currency mixing in training set: currencies=['USD']
+[PASS] only annual-period rows in training set: periods=['year']
+[PASS] target = midpoint of disclosed range (never fabricated): salary_target == (min+max)/2 exactly
+[PASS] min <= max for all kept rows: range validation enforced
+[PASS] preprocessing pipeline stats reported: disclosed=716, usd=716, annual=716, valid=716, final=706
+[PASS] IQR outliers flagged, not silently deleted: flagged=32, trimmed out=10
+[PASS] n_train + n_test in metadata match final rows (within trim/leakage deltas): meta=563+143 vs 706
+[PASS] usable salary records disclosed: 706 usable rows
+[PASS] no target-leaking features (salary columns excluded): 149 features, none salary-derived
+[PASS] features include role, seniority, country, employment, remote, skills: one-hot blocks + skills present
+[PASS] no title/company features (could reconstruct target): no leakage-prone identifier features
+[PASS] predictor loads meta + known values: roles=4, countries=33, skills=100
+[PASS] valid input -> sensible USD prediction: $220,868 in [183,879, 258,899], model=XGBoost
+[PASS] range is empirical error band, wider than point estimate: width=$75,020
+[PASS] currency/period correct in output: USD
+[PASS] seniority shifts prediction: junior=$128,308 vs senior=$149,499
+[PASS] remote status affects prediction: remote=$135,713 vs on-site=$140,234
+[PASS] empty skills list handled: no exception
+[PASS] None skills handled: no exception
+[PASS] unknown role + unknown location -> falls back to defaults (no crash): $130,059 (defaults used)
+[PASS] unknown skills ignored safely: unknown skill has zero effect on prediction
+[PASS] invalid skill values (None/NaN/non-str) don't crash: 0/4 raised
+[PASS] prediction deterministic on repeat calls: identical outputs
+[PASS] different roles -> different predictions: DS=$139,000 vs SW=$138,251
+[PASS] adding skills changes prediction (skill features active): 2 skills=$139,000 vs 5 skills=$140,897
+[PASS] selected model metrics reasonable: MAE=$23,884, R2=0.59, RMSE=$33,421
+[PASS] cv metrics present for all trained models: models=['GradientBoosting', 'LinearRegression', 'RandomForest', 'XGBoost']
+[PASS] model selection by test MAE (generalization, not train accuracy): selected=XGBoost
+[PASS] all 4 model families trained (Linear/RF/GB/XGB): trained=['GradientBoosting', 'LinearRegression', 'RandomForest', 'XGBoost']
+[PASS] salary_prediction page renders: OK
+[PASS] predict-salary button flow works via UI: metrics rendered
+[PASS] regression: salary_benchmark page intact: OK
+[PASS] regression: app.py navigates with salary prediction page: OK
+[PASS] regression: app_pages/career_matcher.py: OK
+[PASS] regression: app_pages/market_intelligence.py: OK
+[PASS] regression: app_pages/job_explorer.py: OK
+[PASS] regression: app_pages/job_recommendations.py: OK
+[PASS] regression: app_pages/resume_analyzer.py: OK
+[PASS] regression: app_pages/skill_gap_analyzer.py: OK
+[PASS] salary benchmark page file exists & separate: two separate salary pages
+
+TOTAL: 45 passed, 0 failed

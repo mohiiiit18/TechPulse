@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Environments & Virtualenvs
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Streamlit secrets & sensitive credentials
+.streamlit/secrets.toml
+.env
+.env.local
+.env.*.local
+
+# Database files & local persistence
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded artifacts & temporary files
+tmp/
+temp/
+*.pdf
+!data/**/*.pdf
+
+# Distribution & Packaging
+dist/
+build/
+*.egg-info/
+
+# Operating System specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor caches
+.idea/
+.vscode/
+*.swp
+*.swo

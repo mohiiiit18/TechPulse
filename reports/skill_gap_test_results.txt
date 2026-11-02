@@ -1,0 +1,50 @@
+TechPulse Phase 6 Skill Gap Analyzer Test Results
+============================================================
+
+[PASS] global demand computed from dataset: top skill=python (744)
+[PASS] global demand pct ≤ 100 and ranks sequential: max pct=43.2
+[PASS] role demand matches direct pandas value_counts: python=208 == 208
+[PASS] role demand pct = count/role postings: 83.2%
+[PASS] demand stats deterministic: identical on repeat calls
+[PASS] unknown role -> empty demand table (no invention): empty frame
+[PASS] demand_score unknown role -> all 0.0: {'python': 0.0, 'sql': 0.0}
+[PASS] gap analysis computes coverage for known role: postings=250, coverage=6.3%
+[PASS] coverage formula = matched/required*100: 5/79 = 6.3%
+[PASS] complete skills -> coverage 100%, no missing: coverage=100.0%
+[PASS] empty skills -> coverage 0, missing = all required: required=79
+[PASS] unknown skills ignored safely: coverage=1.3%
+[PASS] duplicate/case variants collapse: matched=['python', 'sql']
+[PASS] unknown role -> is_known_role False, empty lists: postings=0
+[PASS] different roles produce different requirement sets: SW=2.0% vs DS=6.3%
+[PASS] postings with empty skill lists handled safely: coverage=1.3%
+[PASS] partial matches computed separately (not counted in coverage): partial=[]
+[PASS] priority ranking ranks by demand desc: top=data-engineering (29%)
+[PASS] priority buckets valid (high/medium/low): counts={'high': 0, 'medium': 3, 'low': 71}
+[PASS] priority thresholds applied: Priority is derived only from the cleaned dataset:...
+[PASS] empty missing skills -> no priorities: []
+[PASS] duplicate missing skills deduped in ranking: 1 item
+[PASS] unknown role demand -> all low priority, no fabrication: n=2
+[PASS] roadmap built from priorities: items=74, stages=3
+[PASS] stage mapping high->1, medium->2, low->3: order preserved
+[PASS] roadmap items default Not Started: ('Not Started', 'In Progress', 'Completed')
+[PASS] progress summary: completion 0% initially: {'total': 74, 'not_started': 74, 'in_progress': 0, 'completed': 0, 'completion_pct': 0.0}
+[PASS] roadmap editable (status updates reflected): completion=1.4%
+[PASS] all-completed roadmap -> 100%: 100.0%
+[PASS] empty priorities -> empty roadmap: no items
+[PASS] no course links/durations in roadmap: constraints stated in module
+[PASS] weekly hours stored as context only: weekly_hours=10
+[PASS] gap table sorted by demand desc: top=data-engineering (28.8%)
+[PASS] gap table for unknown role -> empty: empty frame
+[PASS] skill_gap_analyzer page renders (empty state): OK
+[PASS] skill gap page runs analysis via UI: OK
+[PASS] skill gap page handles unknown skills via UI: OK
+[PASS] resume analyzer page still renders (regression): OK
+[PASS] regression: app.py navigates with skill gap page: OK
+[PASS] regression: app_pages/career_matcher.py: OK
+[PASS] regression: app_pages/market_intelligence.py: OK
+[PASS] regression: app_pages/salary_benchmark.py: OK
+[PASS] regression: app_pages/job_explorer.py: OK
+[PASS] regression: app_pages/job_recommendations.py: OK
+[PASS] regression: app_pages/resume_analyzer.py: OK
+
+TOTAL: 45 passed, 0 failed

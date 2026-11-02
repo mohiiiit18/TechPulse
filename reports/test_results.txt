@@ -1,0 +1,22 @@
+TechPulse AppTest Results
+============================================================
+
+[PASS] app.py loads: OK
+[PASS] career_matcher.py loads: OK
+[PASS] market_intelligence.py loads: OK
+[PASS] salary_benchmark.py loads: OK
+[PASS] job_explorer.py loads: OK
+[PASS] job_explorer search C++: OK
+[PASS] job_explorer search (AWS): OK
+[PASS] job_explorer search [React]: OK
+[PASS] salary_benchmark NaN guard: OK
+[PASS] market_intelligence no duplicate chart: OK
+[PASS] career_matcher prediction: OK
+[PASS] Report exists: reports/existing_model_evaluation.json: found
+[PASS] Report exists: reports/model_evaluation.json: found
+[PASS] Report exists: reports/data_quality_report.json: found
+[PASS] Report exists: reports/classification_report.txt: found
+[PASS] Model file exists: models/job_role_model_v2.pkl: found
+[PASS] Model file exists: models/skill_encoder_v2.pkl: found
+
+TOTAL: 17 passed, 0 failed

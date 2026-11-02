@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-10-31T00:26:59.032824",
+  "basic_stats": {
+    "total_rows": 1722,
+    "unique_job_ids": 1722,
+    "duplicate_rows": 0
+  },
+  "missing_values": {
+    "company_name": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "company_domain": {
+      "count": 1030,
+      "pct": 59.81
+    },
+    "company_industry": {
+      "count": 1722,
+      "pct": 100.0
+    },
+    "ats": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "ats_token": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "job_id": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "title": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "department": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "location_raw": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "country": {
+      "count": 422,
+      "pct": 24.51
+    },
+    "city": {
+      "count": 932,
+      "pct": 54.12
+    },
+    "is_remote": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "employment_type": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "salary_min": {
+      "count": 850,
+      "pct": 49.36
+    },
+    "salary_max": {
+      "count": 850,
+      "pct": 49.36
+    },
+    "salary_currency": {
+      "count": 850,
+      "pct": 49.36
+    },
+    "salary_period": {
+      "count": 850,
+      "pct": 49.36
+    },
+    "salary_from_text": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "skills": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "posted_at": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "scraped_at": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "url": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "skill_list": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "job_role": {
+      "count": 0,
+      "pct": 0.0
+    }
+  },
+  "salary_analysis": {
+    "currency_distribution": {
+      "nan": 850,
+      "USD": 716,
+      "EUR": 98,
+      "GBP": 22,
+      "CAD": 12,
+      "SGD": 10,
+      "PLN": 4,
+      "INR": 2,
+      "NZD": 2,
+      "CNY": 1,
+      "AUD": 1,
+      "AMD": 1,
+      "KRW": 1,
+      "SEK": 1,
+      "AED": 1
+    },
+    "period_distribution": {
+      "nan": 850,
+      "year": 786,
+      "hour": 78,
+      "month": 8
+    },
+    "usd_year_outliers": {
+      "n_usd_year_records": 643,
+      "Q1": 140000.0,
+      "Q3": 190000.0,
+      "IQR": 50000.0,
+      "lower_fence": 65000.0,
+      "upper_fence": 265000.0,
+      "n_outliers": 13,
+      "pct_outliers": 2.02
+    }
+  },
+  "top_20_skills": {
+    "python": 744,
+    "sql": 494,
+    "communication": 478,
+    "machine-learning": 431,
+    "product-management": 416,
+    "aws": 371,
+    "llm": 367,
+    "kubernetes": 339,
+    "ci-cd": 307,
+    "ui-ux": 289,
+    "typescript": 278,
+    "react": 268,
+    "gcp": 249,
+    "docker": 242,
+    "data-engineering": 227,
+    "java": 224,
+    "nosql": 221,
+    "kotlin": 183,
+    "devops": 170,
+    "terraform": 168
+  },
+  "suspicious_skill_values_count": 0,
+  "suspicious_skill_samples": [],
+  "job_role_distribution": {
+    "Software Developer": 1006,
+    "Product / Project Manager": 328,
+    "Data Scientist / ML Engineer": 250,
+    "DevOps / Platform Engineer": 138
+  },
+  "date_analysis": {
+    "posted_at": {
+      "n_valid": 1722,
+      "min": "2021-05-04",
+      "max": "2026-07-31",
+      "n_stale_over_2yrs": 44,
+      "pct_stale": 2.56
+    },
+    "scraped_at": {
+      "n_valid": 1722,
+      "min": "2026-08-01",
+      "max": "2026-08-01",
+      "n_stale_over_2yrs": 0,
+      "pct_stale": 0.0
+    }
+  },
+  "country_distribution": {
+    "top_10": {
+      "United States": 523,
+      "Singapore": 104,
+      "United Kingdom": 79,
+      "Germany": 74,
+      "South Korea": 48,
+      "Portugal": 36,
+      "Spain": 34,
+      "Poland": 30,
+      "India": 30,
+      "Australia": 29
+    },
+    "missing_count": 422
+  },
+  "remote_split": {
+    "True": 1041,
+    "False": 681
+  }
+}

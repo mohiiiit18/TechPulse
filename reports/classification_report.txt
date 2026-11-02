@@ -1,0 +1,36 @@
+TechPulse ML Evaluation — Best Model: RandomForest
+Weighted F1: 0.8918
+============================================================
+
+Model: LogisticRegression
+----------------------------------------
+Train Accuracy : 0.8758
+Test  Accuracy : 0.8638
+Overfit Gap    : 0.0120
+Macro F1       : 0.8378
+Weighted F1    : 0.8677
+Macro Precision: 0.8000
+Macro Recall   : 0.8996
+
+Per-class metrics:
+  Data Scientist / ML Engineer                  P=0.746 R=0.940 F1=0.832 N=50.0
+  DevOps / Platform Engineer                    P=0.595 R=0.893 F1=0.714 N=28.0
+  Product / Project Manager                     P=0.900 R=0.955 F1=0.926 N=66.0
+  Software Developer                            P=0.959 R=0.811 F1=0.879 N=201.0
+
+Model: RandomForest
+----------------------------------------
+Train Accuracy : 0.9659
+Test  Accuracy : 0.8899
+Overfit Gap    : 0.0760
+Macro F1       : 0.8561
+Weighted F1    : 0.8918
+Macro Precision: 0.8328
+Macro Recall   : 0.8852
+
+Per-class metrics:
+  Data Scientist / ML Engineer                  P=0.839 R=0.940 F1=0.887 N=50.0
+  DevOps / Platform Engineer                    P=0.647 R=0.786 F1=0.710 N=28.0
+  Product / Project Manager                     P=0.899 R=0.939 F1=0.919 N=66.0
+  Software Developer                            P=0.946 R=0.876 F1=0.910 N=201.0
+

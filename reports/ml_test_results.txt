@@ -1,0 +1,33 @@
+TechPulse Phase 3 ML Test Results
+============================================================
+
+[PASS] v3 model + encoder load: RandomForestClassifier, vocab=100
+[PASS] app load_model returns a validated artifact: prefers v3: RandomForestClassifier
+[PASS] known skills encode: row sum=2
+[PASS] empty skill input handled: returns None + empty df
+[PASS] unknown skills handled safely: unknown=['quantum-telepathy'], predicted=Software Developer
+[PASS] prediction output sensible: python+ML profile -> Data Scientist / ML Engineer
+[PASS] probabilities present & sum to 1: top=Data Scientist / ML Engineer (90.8%)
+[PASS] prediction consistency: deterministic on repeat calls
+[PASS] sklearn version match (no unpickle warning expected): sklearn 1.9.1
+[PASS] model_metadata.json complete: all keys present
+[PASS] metadata sklearn == runtime sklearn: 1.9.1 vs 1.9.1
+[PASS] no group overlap between train/test (no leakage): 0 shared skill-set groups
+[PASS] target not in features: 100 feature cols = skill vocab only
+[PASS] model is the expected RandomForest (not a CalibratedClassifierCV wrapper): type=RandomForestClassifier
+[PASS] metadata discloses uncalibrated probabilities: NOT calibrated — raw probabilities; UI must not present as guaranteed confidence
+[PASS] calibration proxy: mean max-prob within sane range of accuracy: mean max-prob=0.784, test acc=0.864
+[PASS] career_matcher shows calibration disclaimer: 
+[PASS] career_matcher has unknown-skill close-match suggestions: 
+[PASS] all-unknown skills still return a prediction: predicted=Software Developer, unknown=2
+[PASS] all-unknown probabilities sum to 1: sum=100.0
+[PASS] mixed known+unknown handled: predicted=Software Developer
+[PASS] skill case/whitespace normalization: unknown=[]
+[PASS] career_matcher renders with v3 model: OK
+[PASS] career_matcher handles unknown skill via UI: OK
+[PASS] regression: app.py: OK
+[PASS] regression: app_pages/market_intelligence.py: OK
+[PASS] regression: app_pages/salary_benchmark.py: OK
+[PASS] regression: app_pages/job_explorer.py: OK
+
+TOTAL: 28 passed, 0 failed

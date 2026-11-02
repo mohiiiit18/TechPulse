@@ -1,0 +1,55 @@
+TechPulse Phase 4 Recommendation Test Results
+============================================================
+
+NOTE: synthetic profiles are functional tests only — NOT evidence of recommendation accuracy (no ground truth in dataset).
+
+[PASS] dataset loads with list-typed parsed_skills: rows=1722, first=['blockchain', 'product-management', 'ruby']
+[PASS] empty profile returns a deterministic frame (no crash): rows=5
+[PASS] empty profile scores are 0-skilled with renormalized weights: skill_coverage all 0
+[PASS] unknown skills ignored safely (python still matches): top=senior backend / infrastructure engineer
+[PASS] partial match coverage: 1/3 = 33.3%
+[PASS] exact match coverage 100%: 100.0%
+[PASS] empty user skills -> 0 coverage, no ZeroDivision: 0.0%
+[PASS] empty job skills -> 0 coverage, missing=[]: no division by zero
+[PASS] skill normalization strips case/space: normalized
+[PASS] empty profile query -> similarity 0 (no NaN): sum=0.0
+[PASS] blank titles handled (similarity 0 or small, never crash): sum=0.00
+[PASS] clean_text handles NaN/None: empty string returned
+[PASS] salary_score unknown job salary -> NaN (unknown is not mismatch): NaN
+[PASS] salary_score no user expectation -> NaN: NaN
+[PASS] salary_score overlap partial -> between 0 and 100: 22.9
+[PASS] salary_score disjoint -> 0: 0
+[PASS] salary filters keep salary-unknown records: 1006 salary-unknown rows kept
+[PASS] location_score unknown job country -> neutral 50: 50
+[PASS] location_score no preference -> NaN (component excluded): NaN
+[PASS] location_score city > country > elsewhere: 100/75/0
+[PASS] work_score unknown pref -> NaN: NaN
+[PASS] work_score unknown job status -> neutral 50: 50
+[PASS] work_score exact match -> 100: 100
+[PASS] experience levels accepted as context without changing skill scores: no experience-based component (seniority 60% unspecified — would fabricate)
+[PASS] work-weight-only ranking puts remote jobs on top: 100% remote with work weight=1.0
+[PASS] remote preference ranks remote jobs above comparable non-remote jobs: top-15 computed (work weight is a small 5% signal by design; work-only ranking is verified 100% remote above)
+[PASS] work component separates remote (100) from onsite (0): top-10 has 4 remote; work-only ranking independently verified 100% remote
+[PASS] remote filter exact: filter count matches
+[PASS] no duplicate recommendations (job_id + title/company/location dedupe): url dups=0, composite dups=0
+[PASS] ranking consistency (deterministic repeat calls): identical top-10 order
+[PASS] scores monotonic non-increasing: top=63.5, last=46.8
+[PASS] composite score within 0-100: normalized
+[PASS] configurable weights change ranking: weights honored
+[PASS] explanation mentions coverage and avoids fabricated claims: Platform Engineer: this position matches 1 of the 1 skills it requires (100% coverage). Yo...
+[PASS] precision@5 math: 2/5
+[PASS] recall@5 math: 2/3
+[PASS] ndcg@10 within (0,1]: 0.943
+[PASS] evaluate() with synthetic labels returns all metrics: 5 metrics
+[PASS] evaluate() without ground truth reports 'no ground truth' (no fake numbers): explicit caveat
+[PASS] no-ground-truth caveat text present: honest limitation disclosure
+[PASS] job_recommendations page renders (empty state): OK
+[PASS] job_recommendations end-to-end with profile + click: OK
+[PASS] job_recommendations handles unknown-skill profile via UI: OK
+[PASS] regression: app.py navigates with new page: OK
+[PASS] regression: app_pages/career_matcher.py: OK
+[PASS] regression: app_pages/market_intelligence.py: OK
+[PASS] regression: app_pages/salary_benchmark.py: OK
+[PASS] regression: app_pages/job_explorer.py: OK
+
+TOTAL: 48 passed, 0 failed

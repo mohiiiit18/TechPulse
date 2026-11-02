@@ -1,0 +1,49 @@
+{
+  "model": "XGBoost",
+  "test_mae": 23884.4,
+  "test_rmse": 33420.7,
+  "test_r2": 0.5902,
+  "segments": {
+    "job_role=Data Scientist / ML Engineer": {
+      "n": 10,
+      "mae": 18900.0
+    },
+    "job_role=DevOps / Platform Engineer": {
+      "n": 16,
+      "mae": 28523.0
+    },
+    "job_role=Product / Project Manager": {
+      "n": 30,
+      "mae": 24627.0
+    },
+    "job_role=Software Developer": {
+      "n": 87,
+      "mae": 23348.0
+    },
+    "country=United States": {
+      "n": 82,
+      "mae": 24777.0
+    },
+    "country=Unknown": {
+      "n": 49,
+      "mae": 23604.0
+    }
+  },
+  "feature_importance_top15": {
+    "employment_type_full_time": 0.2824,
+    "skill_c#": 0.2277,
+    "skill_spark": 0.0333,
+    "skill_project-management": 0.0295,
+    "seniority_staff": 0.021,
+    "seniority_principal": 0.0156,
+    "skill_elasticsearch": 0.0144,
+    "skill_rest-api": 0.0125,
+    "skill_llm": 0.0111,
+    "skill_scikit-learn": 0.0095,
+    "skill_nosql": 0.0094,
+    "skill_machine-learning": 0.0091,
+    "skill_sem": 0.0084,
+    "seniority_unspecified": 0.0083,
+    "country_Mexico": 0.0078
+  }
+}

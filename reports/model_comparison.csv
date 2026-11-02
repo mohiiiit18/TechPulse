@@ -1,0 +1,4 @@
+model,train_accuracy,test_accuracy,precision_macro,precision_weighted,recall_macro,recall_weighted,f1_macro,f1_weighted,overfit_gap,overfit_warning,best_params,best_cv_f1_macro,n_iter,f1_macro_mean,f1_macro_std,folds
+LogisticRegression,0.8889,0.8377,0.7632,0.8476,0.8081,0.8377,0.7831,0.841,0.0512,False,"{'solver': 'lbfgs', 'C': 1.0}",0.799,15,0.799,0.0133,"[0.8168, 0.7954, 0.7848]"
+RandomForest,0.9673,0.8638,0.8058,0.8696,0.8408,0.8638,0.8216,0.8658,0.1036,False,"{'n_estimators': 500, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_depth': 30}",0.8036,15,0.8036,0.0315,"[0.8396, 0.8083, 0.7628]"
+XGBoost,0.9354,0.858,0.829,0.8555,0.7755,0.858,0.7994,0.8551,0.0774,False,"{'subsample': 0.8, 'n_estimators': 200, 'max_depth': 4, 'learning_rate': 0.03, 'colsample_bytree': 0.8}",0.8234,15,0.8234,0.0224,"[0.8401, 0.8383, 0.7918]"

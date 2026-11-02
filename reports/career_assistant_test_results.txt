@@ -1,0 +1,65 @@
+TechPulse Phase 8 AI Career Assistant Test Results
+============================================================
+
+[PASS] dataset loads for assistant: rows=1722
+[PASS] intent 'Which career is suitable for my sk...' -> career_guidance: got=career_guidance, conf=1.0, kw=['career', 'which career']
+[PASS] intent 'What skills should I learn to beco...' -> skill_gap: got=skill_gap, conf=1.0, kw=['what skills', 'skills should i learn']
+[PASS] intent 'Analyze my career gaps...' -> skill_gap: got=skill_gap, conf=0.75, kw=['analyze my career gaps', 'career gaps']
+[PASS] intent 'Which jobs match my profile?...' -> job_recommendations: got=job_recommendations, conf=1.0, kw=['which jobs', 'jobs match']
+[PASS] intent 'How can I improve my resume?...' -> resume_analysis: got=resume_analysis, conf=1.0, kw=['resume', 'my resume']
+[PASS] intent 'What salary can I expect?...' -> salary_guidance: got=salary_guidance, conf=1.0, kw=['salary']
+[PASS] intent 'Prepare interview questions for a ...' -> interview_prep: got=interview_prep, conf=1.0, kw=['interview', 'interview questions']
+[PASS] intent 'Give me a learning roadmap...' -> learning_roadmap: got=learning_roadmap, conf=1.0, kw=['roadmap']
+[PASS] intent 'Tell me a joke about cats...' -> general: got=general, conf=0.0, kw=[]
+[PASS] empty message -> general: no crash, fallback
+[PASS] retrieval returns relevant jobs: n=3
+[PASS] retrieval empty for nonsense query: no fabricated matches
+[PASS] dataset summary has roles & counts: 1722 jobs, 100 skills
+[PASS] role profile grounded in dataset: postings=250, top=['python', 'machine-learning', 'llm']
+[PASS] unknown role -> known=False (nothing invented): explicit unknown
+[PASS] skill demand retrieval works: top=python
+[PASS] skill-gap answer has coverage + missing skills: Skill coverage for **Data Scientist / ML Engineer**: 5% (4/79 required skills ma
+[PASS] coverage disclaimed as not hiring probability: disclaimer present
+[PASS] job recommendation answer lists records: 1. **senior ai / ml engineer** — artificialanalysis (Melbourne (On-sit
+[PASS] salary answer gives USD figure + limitation: Model estimate for **Data Scientist / ML Engineer** in United States: **$148,652
+[PASS] interview answer has categories + disclaimer: 1752 chars
+[PASS] roadmap answer has stages (needs skills): A learning roadmap needs (a) your current skills and (b) a target role
+[PASS] no-skills career question asks for skills (no invention): To suggest which career fits you, I need your skills. Add them in the 
+[PASS] no-role salary question lists model roles: Which role should I estimate for? The model covers: Data Scientist / M
+[PASS] unknown target role -> explicit fallback (no fabricated requirements): I don't have dataset postings for 'Atlantis Magician', so I won't invent require
+[PASS] interview questions generated per category: n=10
+[PASS] question categories include role-relevant sets: ['HR / behavioral', 'Machine Learning', 'Python', 'Scenario-based', 'Technical / role-specific']
+[PASS] disclaimer: not real company questions: These are curated practice questions relevant to the role's 
+[PASS] data-driven category mapping for known role: ['technical', 'python', 'machine-learning', 'hr', 'scenario']
+[PASS] unknown role -> standard category fallback: ['technical', 'python', 'sql', 'machine-learning', 'hr', 'scenario']
+[PASS] history accumulates turns: turns=4
+[PASS] last user message retrievable: What salary can I expect?
+[PASS] clear empties history: cleared
+[PASS] memory capped (no unbounded growth): turns=80 (cap 80)
+[PASS] empty message -> gentle prompt: It looks like your message is empty — ask me something like:
+[PASS] whitespace-only message -> prompt: handled
+[PASS] LLM requested but unavailable -> grounded fallback answer: Skill coverage for **Software Developer**: 2% (2/98 required skills ma
+[PASS] fallback answer is still usable (no exception): OK
+[PASS] template path (no LLM) yields grounded answer: OK
+[PASS] resume text NOT sent without consent: privacy honored
+[PASS] resume text sent WITH consent: consent honored
+[PASS] no hardcoded API key in llm_provider: key comes from env/secrets only
+[PASS] LLMUnavailable exception defined: typed failure
+[PASS] response generator reuses Phase-4 recommender: 
+[PASS] response generator reuses Phase-6 skill gap: 
+[PASS] response generator reuses Phase-7 salary predictor: 
+[PASS] response generator reuses skill demand stats: 
+[PASS] career_assistant page renders (initial state): OK
+[PASS] chat message flow works via UI: 3 messages rendered
+[PASS] suggested questions rendered as buttons: 7 of 7
+[PASS] regression: app.py navigates with career assistant page: OK
+[PASS] regression: app_pages/career_matcher.py: OK
+[PASS] regression: app_pages/market_intelligence.py: OK
+[PASS] regression: app_pages/salary_benchmark.py: OK
+[PASS] regression: app_pages/salary_prediction.py: OK
+[PASS] regression: app_pages/job_explorer.py: OK
+[PASS] regression: app_pages/job_recommendations.py: OK
+[PASS] regression: app_pages/resume_analyzer.py: OK
+[PASS] regression: app_pages/skill_gap_analyzer.py: OK
+
+TOTAL: 60 passed, 0 failed
