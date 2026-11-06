@@ -1,8 +1,16 @@
+import uuid
 import streamlit as st
 from utils.theme import apply_base_css, page_header
 from utils.data_loader import load_data, get_dataset_date_range
 from src.career_assistant import CareerAssistantApp, ChatSession, SUGGESTED_QUESTIONS
 from src import llm_provider
+from utils.auth import (
+    is_authenticated,
+    save_chat_message,
+    get_chat_history,
+    clear_chat_session,
+    get_profile
+)
 
 df = load_data()
 _latest = get_dataset_date_range()["latest"]
@@ -14,16 +22,39 @@ page_header(":material/forum:", "AI Career Assistant",
             f"cleaned dataset (latest records {_latest_str}) and TechPulse's trained models — "
             "nothing about the market or your qualifications is invented.")
 
-# ── Session memory ───────────────────────────────────────────────────────────
+# ── Session & User Initialization ─────────────────────────────────────────────
 if "ca_session" not in st.session_state:
     st.session_state["ca_session"] = ChatSession()
 if "ca_resume_consent" not in st.session_state:
     st.session_state["ca_resume_consent"] = False
 if "ca_use_llm" not in st.session_state:
     st.session_state["ca_use_llm"] = False
+if "ca_session_id" not in st.session_state:
+    st.session_state["ca_session_id"] = str(uuid.uuid4())[:8]
 
 session: ChatSession = st.session_state["ca_session"]
 app = CareerAssistantApp(df)
+
+authenticated = is_authenticated()
+user_id = st.session_state["user"]["id"] if authenticated else None
+chat_session_id = st.session_state["ca_session_id"]
+
+# If authenticated and in-memory history is empty, restore recent conversation
+if authenticated and user_id and len(session.history) == 0:
+    past_messages = get_chat_history(user_id, session_id=chat_session_id, limit=50)
+    for m in past_messages:
+        session.add(role=m["role"], text=m["message"])
+
+# Auto-populate context from user profile if not yet populated
+if authenticated and user_id and not session.profile.get("skills"):
+    u_prof = get_profile(user_id)
+    if u_prof:
+        if u_prof.get("skills"):
+            session.profile["skills"] = [str(s).lower() for s in u_prof["skills"]]
+        if u_prof.get("target_role"):
+            session.profile["target_role"] = u_prof["target_role"]
+        if u_prof.get("preferred_location"):
+            session.profile["preferred_location"] = u_prof["preferred_location"]
 
 # ── Sidebar controls ─────────────────────────────────────────────────────────
 with st.sidebar:
@@ -35,10 +66,10 @@ with st.sidebar:
                               value=", ".join(session.profile.get("skills", [])),
                               placeholder="python, sql, machine learning")
     role_in = st.text_input("Target role",
-                            value=session.profile.get("target_role", ""),
+                            value=session.profile.get("target_role", "") or "",
                             placeholder="e.g. Data Scientist")
     loc_in = st.text_input("Preferred location",
-                           value=session.profile.get("preferred_location", ""),
+                           value=session.profile.get("preferred_location", "") or "",
                            placeholder="e.g. United States")
     exp_in = st.selectbox("Experience level (optional)",
                           ["", "junior", "mid", "senior"],
@@ -70,6 +101,9 @@ with st.sidebar:
     st.divider()
     if st.button("Clear conversation", icon=":material/delete_history:"):
         session.clear()
+        if authenticated and user_id:
+            clear_chat_session(user_id, chat_session_id)
+            st.session_state["ca_session_id"] = str(uuid.uuid4())[:8]
         st.rerun()
 
 # Apply sidebar context to the session profile
@@ -96,11 +130,15 @@ with chat_container:
         with st.chat_message(turn.role):
             st.markdown(turn.text)
 
-# ── Input ────────────────────────────────────────────────────────────────────
+# ── Input & Response Handling ────────────────────────────────────────────────
 user_msg = st.chat_input("Ask a career question...")
 pending = st.session_state.pop("ca_pending", None) or user_msg
+
 if pending:
     session.add("user", pending)
+    if authenticated and user_id:
+        save_chat_message(user_id, chat_session_id, "user", pending)
+
     with chat_container:
         with st.chat_message("user"):
             st.markdown(pending)
@@ -113,3 +151,5 @@ if pending:
                                   resume_text=str(st.session_state.get("resume_raw_text", ""))
                                   if resume_consent else "")
             st.markdown(turn.text)
+            if authenticated and user_id:
+                save_chat_message(user_id, chat_session_id, "assistant", turn.text)

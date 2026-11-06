@@ -40,6 +40,12 @@ pages = {
         st.Page("app_pages/career_assistant.py", title="AI Career Assistant",
                 icon=":material/forum:"),
     ],
+    "ACCOUNT": [
+    st.Page("app_pages/authentication.py", title="Account & Profile",
+            icon=":material/account_circle:"),
+    st.Page("app_pages/my_history.py", title="My History",
+            icon=":material/history:"),
+    ],
 }
 
 # Sidebar Brand Header with TechPulse Red & Gold Badging
@@ -49,6 +55,8 @@ with st.sidebar:
     with st.container(horizontal=True):
         st.badge("1,700+ Jobs", color="red")
         st.badge("ML v1.2", color="green")
+    if "user" in st.session_state:
+        st.caption(f":material/verified_user: Logged in as **{st.session_state['user'].get('name', 'User')}**")
     st.divider()
     st.markdown("### <span style='color:#D4AF37'>:material/filter_list: Navigation</span>", unsafe_allow_html=True)
 

@@ -80,15 +80,24 @@ c4.metric("Postings analyzed", str(result.analyzed_postings), border=True)
 st.progress(result.coverage_pct / 100.0 if result.coverage_pct else 0.0)
 st.caption(COVERAGE_NOTE)
 
-# Phase 10: record the analysis in the user's history (best effort).
+# Save analysis to user profile history when explicitly requested
 if auth.is_authenticated():
-    try:
-        auth.add_history(st.session_state["user"]["id"], "skill_gap",
-                         {"target_role": target_role,
-                          "coverage_pct": float(result.coverage_pct),
-                          "n_skills": len(chosen)})
-    except Exception:
-        pass
+    if st.button("Save Skill Gap Analysis", icon=":material/save:", type="primary", key="save_skill_gap"):
+        ok, msg = auth.add_history(
+            st.session_state["user"]["id"],
+            "skill_gap",
+            {
+                "target_role": target_role,
+                "coverage_pct": float(result.coverage_pct),
+                "n_skills": len(chosen),
+                "matched_skills": list(result.matched)[:20],
+                "missing_skills": list(result.missing)[:20]
+            }
+        )
+        if ok:
+            st.success("Skill gap analysis saved to your history!")
+        else:
+            st.error(f"Unable to save: {msg}")
 
 if result.matched:
     st.markdown("**:material/check: Matching skills**")

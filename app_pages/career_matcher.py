@@ -1,3 +1,4 @@
+from utils.auth import get_profile, is_authenticated
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
@@ -28,10 +29,43 @@ page_header(":material/psychology:", "Career Matcher",
             f"Benchmark your technical skill set against historical market data "
             f"(latest records {_latest_str}) to discover your best-fit job role and bridge competency gaps.")
 
-# Session state initialization for skill selection
-# BUG 2 & 3 FIX: Use "skill_multiselect" key to let Streamlit manage widget state
+# Load saved profile skills when the logged-in user changes
+current_user = st.session_state.get("user", {})
+current_user_id = current_user.get("id") if auth.is_authenticated() else None
+
+if st.session_state.get("_profile_loaded_for_user") != current_user_id:
+
+    default_skills = ["python", "machine-learning", "sql"]
+
+    if current_user_id:
+        profile = get_profile(current_user_id)
+
+        if profile and profile.get("skills"):
+            # Match saved skills with the model's actual skill vocabulary
+            skill_lookup = {
+                skill.lower(): skill for skill in available_skills
+            }
+
+            saved_skills = [
+                skill_lookup[skill.lower()]
+                for skill in profile["skills"]
+                if skill.lower() in skill_lookup
+            ]
+
+            st.session_state["skill_multiselect"] = saved_skills
+        else:
+            st.session_state["skill_multiselect"] = default_skills
+
+    else:
+        st.session_state["skill_multiselect"] = default_skills
+
+    st.session_state["_profile_loaded_for_user"] = current_user_id
+
+# Initialize if the key does not exist
 if "skill_multiselect" not in st.session_state:
-    st.session_state["skill_multiselect"] = ["python", "machine-learning", "sql"]
+    st.session_state["skill_multiselect"] = [
+        "python", "machine-learning", "sql"
+    ]
 
 # Preset profile selection
 with st.container(border=True):
@@ -176,14 +210,28 @@ with st.container(border=True):
 st.space("small")
 matched_skills, missing_skills = get_skill_gap_analysis(predicted_role, selected, df)
 
-# Phase 10: record this analysis in the user's history (best effort).
+# Save analysis only when explicitly requested
 if auth.is_authenticated():
-    try:
-        auth.add_history(st.session_state["user"]["id"], "career_match",
-                         {"skills": selected, "predicted_role": predicted_role,
-                          "top_score": top_score})
-    except Exception:
-        pass
+
+    if st.button(
+        "Save This Analysis",
+        icon=":material/save:",
+        type="primary",
+        key="save_career_analysis"
+    ):
+        ok, msg = auth.add_history(
+            st.session_state["user"]["id"],
+            "career_match",
+            {
+                "skills": selected,
+                "predicted_role": predicted_role,
+                "top_score": float(top_score)
+            }
+        )
+        if ok:
+            st.success("Career analysis saved successfully!")
+        else:
+            st.error(f"Unable to save analysis: {msg}")
 
 with st.container(border=True):
     st.subheader("Competency & skill gap breakdown", icon=":material/radar:")

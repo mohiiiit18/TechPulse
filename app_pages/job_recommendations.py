@@ -5,6 +5,7 @@ from utils.data_loader import load_data, get_dataset_date_range, SKILL_CATEGORIE
 from src.recommendation_engine import UserProfile, recommend, explain_recommendation
 from src.ranking import RankWeights
 from src.recommendation_evaluation import no_ground_truth_available
+from utils.auth import is_authenticated, save_job, is_job_saved, remove_saved_job, get_profile
 
 df = load_data()
 _latest = get_dataset_date_range()["latest"]
@@ -19,6 +20,14 @@ page_header(":material/auto_awesome:", "Job Recommendations",
 # ── User profile input (Step 2) ─────────────────────────────────────────────
 available_skills = sorted({s for skills in df["parsed_skills"] for s in skills})
 
+# Auto-load saved profile skills if user is authenticated
+default_rec_skills = []
+if is_authenticated():
+    u_profile = get_profile(st.session_state["user"]["id"])
+    if u_profile and u_profile.get("skills"):
+        skill_map = {s.lower(): s for s in available_skills}
+        default_rec_skills = [skill_map[s.lower()] for s in u_profile["skills"] if s.lower() in skill_map]
+
 with st.container(border=True):
     st.markdown("**Your profile**")
     st.caption("All fields are optional — incomplete profiles are handled safely "
@@ -30,6 +39,7 @@ with st.container(border=True):
         selected_skills = st.multiselect(
             "Technical skills",
             options=available_skills,
+            default=default_rec_skills,
             placeholder="Type to search e.g. python, kubernetes, react, aws...",
         )
         roles = ["No preference"] + sorted(df["job_role"].dropna().unique().tolist())
@@ -169,8 +179,58 @@ for idx, (_, job) in enumerate(recs.iterrows()):
 
             st.caption(f"💡 {explain_recommendation(job, df)}")
 
-            if pd.notna(job["url"]) and str(job["url"]).startswith("http"):
-                st.link_button("View job posting", str(job["url"]), icon=":material/open_in_new:")
+            has_url = pd.notna(job["url"]) and str(job["url"]).startswith("http")
+            job_url = str(job["url"]) if has_url else ""
+            target_job_id = job_url if has_url else f"{job.get('title', 'job')}_{idx}"
+
+            col_view, col_save = st.columns(2)
+
+            with col_view:
+                if has_url:
+                    st.link_button(
+                        "View Job",
+                        job_url,
+                        icon=":material/open_in_new:",
+                        use_container_width=True
+                    )
+                else:
+                    st.button(
+                        "No Link",
+                        disabled=True,
+                        icon=":material/link_off:",
+                        key=f"no_link_{idx}",
+                        use_container_width=True
+                    )
+
+            with col_save:
+                if is_authenticated():
+                    user_id = st.session_state["user"]["id"]
+                    already_saved = is_job_saved(user_id, target_job_id)
+
+                    if already_saved:
+                        if st.button(
+                            "Saved",
+                            icon=":material/bookmark_added:",
+                            key=f"saved_job_{idx}",
+                            use_container_width=True
+                        ):
+                            remove_saved_job(user_id, target_job_id)
+                            st.rerun()
+                    else:
+                        if st.button(
+                            "Save Job",
+                            icon=":material/bookmark_add:",
+                            key=f"save_job_{idx}",
+                            use_container_width=True
+                        ):
+                            try:
+                                save_job(user_id, target_job_id)
+                                st.success("Job saved successfully!")
+                                st.rerun()
+                            except Exception as e:
+                                st.error(f"Unable to save job: {e}")
+                else:
+                    st.caption("Log in to save jobs.")
 
 st.divider()
 with st.expander("Why can't recommendation quality be validated yet?", icon=":material/help:"):

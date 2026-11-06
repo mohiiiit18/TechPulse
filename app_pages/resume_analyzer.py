@@ -52,20 +52,36 @@ st.space("small")
 # Phase 6 integration: expose extracted skills for the Skill Gap Analyzer handoff.
 st.session_state["resume_skills"] = list(resume.all_skills)
 
-# Phase 10: record the analysis in the user's history (best effort).
-if auth.is_authenticated():
-    try:
-        auth.add_history(st.session_state["user"]["id"], "resume_analysis",
-                         {"skills_found": len(resume.all_skills),
-                          "pages": resume.n_pages})
-    except Exception:
-        pass
+# Action row: handoff to Skill Gap Analyzer & explicit Save to History
+col_hand, col_save_hist = st.columns(2)
+with col_hand:
+    if st.button("Send skills to Skill Gap Analyzer", icon=":material/swap_vert:", use_container_width=True):
+        st.session_state["sga_skills"] = [
+            s for s in resume.all_skills
+        ]
+        st.switch_page("app_pages/skill_gap_analyzer.py")
 
-if st.button("Send skills to Skill Gap Analyzer", icon=":material/swap_vert:"):
-    st.session_state["sga_skills"] = [
-        s for s in resume.all_skills
-    ]
-    st.switch_page("app_pages/skill_gap_analyzer.py")
+with col_save_hist:
+    if auth.is_authenticated():
+        if st.button("Save Resume Audit to History", icon=":material/save:", type="primary", use_container_width=True):
+            ok, msg = auth.add_history(
+                st.session_state["user"]["id"],
+                "resume_analysis",
+                {
+                    "full_name": resume.full_name or "Candidate",
+                    "skills_found": len(resume.all_skills),
+                    "skills": list(resume.all_skills)[:25],
+                    "pages": resume.n_pages,
+                    "experience_entries": len(resume.experience),
+                    "projects_entries": len(resume.projects)
+                }
+            )
+            if ok:
+                st.success("Resume audit saved to your profile history!")
+            else:
+                st.error(f"Unable to save: {msg}")
+    else:
+        st.caption("Sign in to save this resume analysis to your account history.")
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Pages", resume.n_pages)
 c2.metric("Skills found", len(resume.all_skills))

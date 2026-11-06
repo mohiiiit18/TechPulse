@@ -44,3 +44,19 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
+
+# Additional sensitive configuration
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Test and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Archives
+*.zip
